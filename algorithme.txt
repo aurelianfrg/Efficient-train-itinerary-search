@@ -1,0 +1,37 @@
+structures de données préalables:
+	trajetsParGare clé: id gare, valeur: liste de trajets
+	
+
+fonction trouverItineraire( stoppointDepart, stoppointArrivee, datetimeDepart )
+	
+	//initialisation structures de données	
+	listeGaresAtteintes <-- {} clé: id gare, valeur: 0 non atteint / 1 atteint (hashmap pour accès en O(1))
+	arbreTrajetsParents <-- {} clé: id gare, valeur: trajet parent dans l'arborescence 
+	trajetsEmpruntes <-- [] liste des trajets empruntes dans l'itinéraire trouvé 
+	
+	//initalisation variables
+	gareAtteinte <-- stoppointDepart
+	fileTrajets une file de priorité de Trajet sur l'heure d'arrivée des trajets
+	
+	initialiser la file des trajets avec ceux qui partent du départ
+	Tant que  gareAtteinte != stoppointArrivee  et taille(file) > 0
+		trajetATester <-- premier trajet dans la file 
+		gareAtteinte <-- gare d'arrivée de trajetATester
+		Si la gare n'a pas encore été atteinte
+			listeGaresAtteintes[gareAtteinte] <-- 1
+			arbreTrajetsParents[gareAtteinte] <-- trajetAtester
+			ajouter à fileTrajets les trajets partants après l'heure d'arrivée de trajetATester à gareAtteinte
+		
+	Si gareAtteinte == stoppointArrivee
+		//reconstruction de l'itinéraire avec l'arbre des parents
+		trajetsEmpruntes[0] <-- trajetATester
+		Tant que  le dernier trajet ajouté ne part pas de stoppointDepart
+			ajouter à trajetsEmpruntes le trajet parent de la gare de départ du dernier trajet ajouté
+	Sinon il n'existe pas d'itinéraire
+
+	retourner trajetsEmpruntes
+			
+
+
+pistes d'heuristiques (estimation optimiste de l'arrivée à destination) :
+	- heure de départ du prochain train (tenir une structure de donnée où c'est en O(1)) + d / v_max (~300 km/h)
