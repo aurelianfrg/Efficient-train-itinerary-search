@@ -109,6 +109,8 @@ public:
 
     void ecrireResultat(ostream & os, const list<Trajet> & itineraire);
 
+    void ecrireResultatCSV(ostream & os, const list<Trajet> & itineraire);
+
     void ecrireGares(ostream & os);
 
 

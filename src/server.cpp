@@ -174,10 +174,14 @@ int main(const int argc, const char** argv) { //args must be: stoppointDepart st
 			cerr << "Aucun initinéraire n'a été trouvé";
 		}
 
-		// reponse au client 
+		// reponse au client en écrivant en CSV l'itinéraire train par train, puis l'itinéraire détaillé gare par gare après un séparateur $
 		stringstream response_stream;
-		dataParser.ecrireResultat(response_stream, dataParser.formaterItineraire(trajetsEmpruntes)); //faire un formaterItineraireJSON qui soit compatible avec l'usage web
-		char response[1024];
+
+		dataParser.ecrireResultatCSV(response_stream, dataParser.formaterItineraire(trajetsEmpruntes)); //faire un formaterItineraireJSON qui soit compatible avec l'usage web
+		response_stream << '$' ;
+		dataParser.ecrireResultatCSV(response_stream, trajetsEmpruntes); //faire un formaterItineraireJSON qui soit compatible avec l'usage web
+
+		char response[4096];
 		strcpy(response, response_stream.str().c_str());
 		clog << response << endl;
 		send(clientSocket, response, strlen(response), 0);

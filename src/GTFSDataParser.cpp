@@ -289,6 +289,18 @@ void GTFSDataParser::ecrireResultat(ostream & os, const list<Trajet> & itinerair
     }
 }
 
+void GTFSDataParser::ecrireResultatCSV(ostream & os, const list<Trajet> & itineraire) {
+    for (Trajet trajet : itineraire) {
+        os << trajet.getDepStopArea() << ';'
+        << trajet.getArrStopArea() << ';'
+        << trajet.getTimestampDep() << ';'
+        << trajet.getTimestampArr() << ';'
+        << trajet.tripId
+        << endl;
+    }
+}
+
+
 void GTFSDataParser::ecrireGares(ostream & os) {
     //unordered_map<string,tuple<string,double,double>> stopsAreaInfo
     for (auto & [stopArea, infos] : stopsAreaInfo) {
