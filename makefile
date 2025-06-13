@@ -33,6 +33,10 @@ parsing: $(OBJ_PATH)/parsing.o
 	@mkdir -p $(BIN_PATH)
 	$(GCC) -o $(BIN_PATH)/$@ $^ $(LIBS)
 
+server: $(OBJ_PATH)/server.o $(OBJ_PATH)/GTFSDataParser.o $(OBJ_PATH)/Trajet.o
+	@mkdir -p $(BIN_PATH)
+	$(GCC) -o $(BIN_PATH)/$@ $^ $(LIBS)
+
 # Compilation des fichiers objets
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 	@mkdir -p $(OBJ_PATH)
