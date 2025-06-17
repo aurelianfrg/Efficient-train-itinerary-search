@@ -177,9 +177,9 @@ int main(const int argc, const char** argv) { //args must be: stoppointDepart st
 		// reponse au client en écrivant en CSV l'itinéraire train par train, puis l'itinéraire détaillé gare par gare après un séparateur $
 		stringstream response_stream;
 
-		dataParser.ecrireResultatCSV(response_stream, dataParser.formaterItineraire(trajetsEmpruntes)); //faire un formaterItineraireJSON qui soit compatible avec l'usage web
+		dataParser.ecrireResultatCSV(response_stream, dataParser.formaterItineraire(trajetsEmpruntes)); 
 		response_stream << '$' ;
-		dataParser.ecrireResultatCSV(response_stream, trajetsEmpruntes); //faire un formaterItineraireJSON qui soit compatible avec l'usage web
+		dataParser.ecrireResultatCSV(response_stream, trajetsEmpruntes); 
 
 		char response[4096];
 		strcpy(response, response_stream.str().c_str());

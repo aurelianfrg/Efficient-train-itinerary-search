@@ -1,7 +1,7 @@
+# Todo list
 
- - donner un fichier pour l'écriture de la sortie
- - correspondances à Paris
- - heuristiques (même si ça fonctionne déjà super)
+ [] correspondances à Paris
+ [X] heuristiques (même si ça fonctionne déjà super)
 
- - utiliser l'interface python pour faire des appels à l'algo c++
- - modèle client/serveur pour garder les données chargées dans le programme c++ (avec des socket?)
+ [X] utiliser l'interface python pour faire des appels à l'algo c++
+ [X] modèle client/serveur pour garder les données chargées dans le programme c++ (avec des socket?)

@@ -46,5 +46,5 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 $(CLEAN):
 	$(RM) $(RMFLAGS) $(OBJ_PATH)/*.o $(BIN_PATH)/*
 
-$(OTHER):
-	@echo ceci est inutile 
+run: $(BIN_PATH)/server
+	
